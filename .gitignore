@@ -3,3 +3,9 @@ env
 
 # Base de Datos local
 db.sqlite3
+
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
