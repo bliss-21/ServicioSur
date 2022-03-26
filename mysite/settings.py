@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-INSTALLED_APPS = [
+DJANGO_APPS  = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,6 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+APPS_DE_TERCEROS  = []
+
+MIS_APPS  = []
+
+INSTALLED_APPS = DJANGO_APPS + APPS_DE_TERCEROS +MIS_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -103,9 +109,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+#Fuente: https://www.andiamo.co.uk/resources/iso-language-codes/
+LANGUAGE_CODE = 'es-cl' 
 
-TIME_ZONE = 'UTC'
+#Fuente: https://www.iteramos.com/pregunta/20549/python---pytz---lista-de-zonas-horarias
+TIME_ZONE = 'Chile/Continental' 
 
 USE_I18N = True
 
