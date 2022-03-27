@@ -41,7 +41,9 @@ DJANGO_APPS  = [
 
 APPS_DE_TERCEROS  = []
 
-MIS_APPS  = []
+MIS_APPS  = [
+    'apps.accounts',
+]
 
 INSTALLED_APPS = DJANGO_APPS + APPS_DE_TERCEROS +MIS_APPS
 
@@ -129,3 +131,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGIN_REDIRECT_URL= 'login'
