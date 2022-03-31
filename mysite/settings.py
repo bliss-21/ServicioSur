@@ -44,9 +44,10 @@ APPS_DE_TERCEROS  = []
 MIS_APPS  = [
     'apps.accounts',
     'apps.core',
+    'apps.business',
 ]
 
-INSTALLED_APPS = DJANGO_APPS + APPS_DE_TERCEROS +MIS_APPS
+INSTALLED_APPS = DJANGO_APPS + APPS_DE_TERCEROS + MIS_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
