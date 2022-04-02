@@ -1,4 +1,3 @@
-from statistics import mode
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -22,7 +21,7 @@ class UserProfile(models.Model):
 
     #foreign keys:
     user = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True)
-    business = mode.ForeignKey(Business, on_delete=models.PROTECT, null=True, blank=True)
+    business = models.ForeignKey(Business, on_delete=models.PROTECT, null=True, blank=True)
 
     def is_active(self):
         """Indica si el perfil de usuario está  activo.
