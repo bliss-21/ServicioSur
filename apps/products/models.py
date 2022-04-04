@@ -3,6 +3,35 @@ from django.db import models
 # import de models.py de apps.business
 from ..business.models import Business
 
+# Clase Tipo Producto
+class ProductType(models.Model):
+    """Son los distintos tipos de productos que se pueden almacenar en la BD
+
+    Attributes:
+        type_product: Nombre del producto.
+    """
+    #no sé si dejarlo Charfield, dependerá de cuantos tipos de productos ofrezcamos pero ahí vemos.
+    type_product =  models.CharField(max_length=255, null=False, blank=False)
+
+    def __str__(self):
+        return self.type_product
+
+    class Meta:
+        """Clase que usa Django para configurar el modelo.
+
+        docs: https://docs.djangoproject.com/en/4.0/ref/models/options/
+
+        Attributes:
+            verbose_name = Un nombre legible por humanos para el objeto, en singular.
+            verbose_name_plural = El nombre plural del objeto.
+            ordering = El orden predeterminado para el objeto, para usar al obtener listas de objetos, puede ser por mas de un atributo, asd o desc
+            permissions = Permisos adicionales para ingresar en la tabla de permisos al crear este objeto.
+        """
+        verbose_name = "Tipo de Producto"
+        verbose_name_plural = "Tipos de Productos"
+        ordering = ["type_product"]
+
+
 # Clase Producto
 class Product(models.Model):
     """Son los distintos productos que se pueden almacenar en la BD
@@ -27,6 +56,7 @@ class Product(models.Model):
 
     #foreign keys:
     business = models.ForeignKey(Business, on_delete=models.PROTECT, null=True, blank=True)
+    type_product = models.ForeignKey(ProductType, on_delete=models.PROTECT, null=True, blank=True)
 
     def __str__(self):
         return self.product_name
@@ -45,35 +75,3 @@ class Product(models.Model):
         verbose_name = "Producto"
         verbose_name_plural = "Productos"
         ordering = ["product_name"]
-
-# Esta clase la agregué pero no sé si irá aquí dentro de Products, o debe ser una app aparte, ahí tu ves :0
-# Clase Tipo Producto
-class Product_type(models.Model):
-    """Son los distintos tipos de productos que se pueden almacenar en la BD
-
-    Attributes:
-        type_product: Nombre del producto.
-    """
-    #no sé si dejarlo Charfield, dependerá de cuantos tipos de productos ofrezcamos pero ahí vemos.
-    type_product =  models.CharField(max_length=255, null=False, blank=False)
-
-    #foreign keys:
-    product = models.ForeignKey(Product, on_delete=models.PROTECT, null=True, blank=True)
-
-    def __str__(self):
-        return self.type_product
-
-    class Meta:
-        """Clase que usa Django para configurar el modelo.
-
-        docs: https://docs.djangoproject.com/en/4.0/ref/models/options/
-
-        Attributes:
-            verbose_name = Un nombre legible por humanos para el objeto, en singular.
-            verbose_name_plural = El nombre plural del objeto.
-            ordering = El orden predeterminado para el objeto, para usar al obtener listas de objetos, puede ser por mas de un atributo, asd o desc
-            permissions = Permisos adicionales para ingresar en la tabla de permisos al crear este objeto.
-        """
-        verbose_name = "Tipo de Producto"
-        verbose_name_plural = "Tipos de Productos"
-        ordering = ["type_product"]
